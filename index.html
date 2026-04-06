@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freezer Smart - Pro</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>🧊 Il Mio Congelatore</h2>
+
+    <div id="scanner-container"></div>
+    
+    <button class="btn-scan" onclick="avviaScanner()">📷 Scansiona Prodotto</button>
+
+    <div class="input-group">
+        <input type="text" id="cibo" placeholder="Nome alimento...">
+        <input type="date" id="data">
+        <input type="number" id="mesi" placeholder="Durata (mesi)" min="1">
+        <button class="btn-add" onclick="aggiungiCibo()">Salva nel Freezer</button>
+    </div>
+
+    <hr>
+
+    <ul id="listaCibo"></ul>
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

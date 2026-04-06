@@ -1,0 +1,151 @@
+/* --- Soluzione: Modern Frost Card - Dark con Schede Bianche --- */
+
+/* 1. Impostazioni Globali: Sfondo Scuro e Moderno */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #121212; /* Un nero/grigio molto scuro */
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 480px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* 2. Header e Pulsante Scanner Prominente */
+h2 {
+    color: #00bcd4; /* Azzurro vivace che risalta sullo scuro */
+    text-align: center;
+    font-weight: 300;
+    margin-bottom: 25px;
+}
+
+.btn-scan {
+    background: linear-gradient(135deg, #00bcd4 0%, #00acc1 100%); /* Gradiente azzurro vivace */
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 50px; /* Molto arrotondato */
+    font-size: 1.1rem;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.4); /* Ombra colorata */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.btn-scan:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 188, 212, 0.6);
+}
+
+/* 3. Area Input Scura (con campi chiari per leggibilità) */
+.input-group {
+    background-color: #1e1e1e; /* Leggermente più chiaro del body */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    margin-bottom: 25px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #333; /* Bordo scuro e discreto */
+    background-color: #2c2c2c; /* Sfondo scuro per il campo input */
+    color: white; /* Testo input bianco */
+    border-radius: 8px;
+    box-sizing: border-box; /* Importante per il padding */
+}
+
+input:focus {
+    border-color: #00bcd4;
+    outline: none;
+}
+
+.btn-add {
+    background-color: #00796b; /* Un verde scuro e rassicurante */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* 4. Lista e Schede (Cards) - QUI C'È LA MODIFICA! */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background-color: white; /* --- SFONDO BIANCO PER LE CARDS! --- */
+    color: #333; /* Testo scuro per leggere sul bianco */
+    border-radius: 12px;
+    margin-bottom: 15px;
+    padding: 0; /* Rimuoviamo il padding qui, lo mettiamo dentro */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Ombra leggermente più netta */
+    display: grid;
+    grid-template-columns: 10px 1fr auto; /* Colonna per la barra colore, contenuto, tasto elimina */
+    overflow: hidden; /* Importante per la barra colore */
+    align-items: center;
+}
+
+/* La barra di stato colorata sulla sinistra */
+li::before {
+    content: '';
+    grid-column: 1;
+    height: 100%;
+    width: 100%;
+}
+
+/* Contenuto della scheda */
+li > div {
+    grid-column: 2;
+    padding: 15px 20px;
+}
+
+li strong {
+    font-size: 1.1rem;
+    color: #111; /* Testo principale molto scuro */
+}
+
+.data-scadenza {
+    font-size: 0.9rem;
+    color: #555; /* Data leggermente meno scura */
+    margin-top: 5px;
+}
+
+/* Il tasto X per eliminare */
+li > button {
+    grid-column: 3;
+    background: none;
+    border: none;
+    color: #ff5252; /* Un rosso vivido per il tasto elimina */
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 15px;
+    margin-right: 10px;
+}
+
+/* 5. Codici Colore degli Stati (con sfondo bianco per le cards) */
+
+/* Stato OK: Barra Verde */
+.stato-ok::before { background-color: #4caf50; }
+
+/* In Scadenza: Barra Gialla/Arancio */
+.stato-attenzione::before { background-color: #ff9800; }
+
+/* Scaduto: Barra Rossa */
+.stato-scaduto::before { background-color: #f44336; }
