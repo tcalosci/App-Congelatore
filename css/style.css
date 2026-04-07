@@ -25,6 +25,33 @@ h2 {
     margin-bottom: 25px;
 }
 
+.header-freezer {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+#selectFreezer {
+    flex-grow: 1;
+    background: #1e1e1e;
+    color: #00bcd4;
+    border: 1px solid #333;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.btn-small {
+    background: #00796b;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 .btn-scan {
     background: linear-gradient(135deg, #00bcd4 0%, #00acc1 100%); /* Gradiente azzurro vivace */
     color: white;
