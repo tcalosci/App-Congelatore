@@ -46,6 +46,24 @@ function nuovoFreezer() {
     }
 }
 
+function eliminaFreezerAttuale() {
+    if (Object.keys(datiFreezer).length <= 1) {
+        alert("Non puoi eliminare l'ultimo freezer rimasto!");
+        return;
+    }
+
+    if (confirm(`Vuoi davvero eliminare il freezer "${freezerAttivo}" e tutto il suo contenuto?`)) {
+        delete datiFreezer[freezerAttivo]; // Rimuove il freezer dall'oggetto
+        
+        // Imposta come attivo il primo freezer che trova tra quelli rimasti
+        freezerAttivo = Object.keys(datiFreezer)[0]; 
+        
+        salvaTutto();
+        aggiornaMenuFreezer();
+        mostraLista();
+    }
+}
+
 // 5. MOSTRA LISTA: Questa è la funzione che disegna le Card sul telefono
 function mostraLista() {
     const listaUl = document.getElementById('listaCibo');
@@ -80,7 +98,7 @@ function mostraLista() {
 
 // 6. AGGIUNGI E ELIMINA: Operazioni sui dati
 function aggiungiInInventario() {
-    const nome = document.getElementById('nome').value;
+    const nome = document.getElementById('cibo').value;
     const data = document.getElementById('data').value;
     const mesi = document.getElementById('mesi').value;
 
