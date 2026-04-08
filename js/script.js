@@ -127,3 +127,51 @@ function salvaTutto() {
     localStorage.setItem('multi_freezer', JSON.stringify(datiFreezer));
     localStorage.setItem('freezer_attuale', freezerAttivo);
 }
+
+function avviaScanner() {
+    // Usiamo la libreria Quagga che avevamo impostato all'inizio
+    Quagga.init({
+        inputStream: {
+            name: "Live",
+            type: "LiveStream",
+            target: document.querySelector('#interactive'), // Il div per la telecamera
+            constraints: {
+                facingMode: "environment" // Usa la camera posteriore
+            },
+        },
+        decoder: {
+            readers: ["ean_reader", "ean_8_reader"] // Formati barcode standard alimentari
+        }
+    }, function (err) {
+        if (err) {
+            console.error(err);
+            alert("Errore nell'avvio della fotocamera. Verifica i permessi!");
+            return;
+        }
+        Quagga.start();
+    });
+
+    // Cosa succede quando viene rilevato un codice
+    Quagga.onDetected(function (data) {
+        const codice = data.codeResult.code;
+        console.log("Codice rilevato: " + codice);
+        Quagga.stop(); // Ferma la camera dopo la lettura
+        
+        // Chiama la funzione per cercare il nome del prodotto
+        cercaSuOpenFoodFacts(codice);
+    });
+}
+
+function cercaSuOpenFoodFacts(codice) {
+    fetch(`https://world.openfoodfacts.org/api/v0/product/${codice}.json`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 1) {
+                document.getElementById('nome').value = data.product.product_name;
+                alert("Prodotto trovato: " + data.product.product_name);
+            } else {
+                alert("Prodotto non trovato nel database, inseriscilo a mano.");
+            }
+        })
+        .catch(err => console.error("Errore API:", err));
+}
