@@ -111,7 +111,9 @@ function aggiungiInInventario() {
         mostraLista();
         
         // Puliamo i campi
-        document.getElementById('nome').value = "";
+        document.getElementById('cibo').value = "";
+        document.getElementById('data').value = "";
+        document.getElementById('mesi').value = "";
     } else {
         alert("Riempi tutti i campi!");
     }
@@ -167,7 +169,7 @@ function cercaSuOpenFoodFacts(codice) {
         .then(response => response.json())
         .then(data => {
             if (data.status === 1) {
-                document.getElementById('nome').value = data.product.product_name;
+                document.getElementById('cibo').value = data.product.product_name;
                 alert("Prodotto trovato: " + data.product.product_name);
             } else {
                 alert("Prodotto non trovato nel database, inseriscilo a mano.");
