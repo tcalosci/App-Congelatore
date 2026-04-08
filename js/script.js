@@ -134,7 +134,7 @@ function avviaScanner() {
         inputStream: {
             name: "Live",
             type: "LiveStream",
-            target: document.querySelector('#interactive'), // Il div per la telecamera
+            target: document.querySelector('#scanner-container'), // Il div per la telecamera
             constraints: {
                 facingMode: "environment" // Usa la camera posteriore
             },
