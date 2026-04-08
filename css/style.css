@@ -72,6 +72,29 @@ h2 {
     box-shadow: 0 6px 20px rgba(0, 188, 212, 0.6);
 }
 
+#canner-container.viewport {
+    width: 100%;
+    height: 300px; /* O l'altezza che preferisci */
+    border-radius: 15px;
+    overflow: hidden;
+    background: #000; /* Sfondo nero mentre carica */
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#canner-container.viewport video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Riempie il riquadro senza deformarsi */
+}
+
+/* Questa è la linea verde che "scansiona" (opzionale ma fa scena) */
+canvas.drawingBuffer {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 /* 3. Area Input Scura (con campi chiari per leggibilità) */
 .input-group {
     background-color: #1e1e1e; /* Leggermente più chiaro del body */
