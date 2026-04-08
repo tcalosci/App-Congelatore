@@ -72,7 +72,7 @@ h2 {
     box-shadow: 0 6px 20px rgba(0, 188, 212, 0.6);
 }
 
-#canner-container.viewport {
+#scanner-container.viewport {
     width: 100%;
     height: 300px; /* O l'altezza che preferisci */
     border-radius: 15px;
@@ -82,7 +82,7 @@ h2 {
     position: relative;
 }
 
-#canner-container.viewport video {
+#scanner-container.viewport video {
     width: 100%;
     height: 100%;
     object-fit: cover; /* Riempie il riquadro senza deformarsi */
